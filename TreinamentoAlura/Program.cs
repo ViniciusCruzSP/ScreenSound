@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 
 string boasVindas = "Bem-Vindo ao Screen Sound";
-List<string> listaBandas = new List<string>();
+Dictionary<string, List<int>> listaBandas = new Dictionary<string, List<int>>();0,
 
 void ExibirMensagemDeBoasVindas()
 {
@@ -44,9 +44,9 @@ void RegistrarBandas()
     Console.Write("Banda que deseja registrar: ");
     string nomeBanda = Console.ReadLine()!;
     listaBandas.Add(nomeBanda);
-    Thread.Sleep(2000);
+    Thread.Sleep(500);
     Console.WriteLine($"\nA banda {nomeBanda} foi registrada com sucesso!");
-    Thread.Sleep(2000);
+    Thread.Sleep(1000);
     Console.Clear();
     OpcoesMenu();
 }
@@ -55,13 +55,13 @@ void ListarBandas()
 {
     Console.Clear();
     Console.WriteLine("\nAs bandas registradas são:");
-    for (int i = 0; i < listaBandas.Count; i++)
+    foreach (string banda in listaBandas)
     {
-        Console.WriteLine($"Banda: {listaBandas[i]}");
+        Console.WriteLine($"Banda: {banda}");
     }
     Console.WriteLine("\nDigite algo pra voltar para a página inicial");
     Console.ReadKey();
-    Thread.Sleep(2000);
+    Thread.Sleep(500);
     Console.Clear();
     OpcoesMenu();
 }
