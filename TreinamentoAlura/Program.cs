@@ -30,7 +30,7 @@ void OpcoesMenu()
             break;
         case 4: MediaBanda();
             break;
-        case 0: Console.WriteLine("\nVocê escolheu a opção " + opcaoEscolhidaNum);
+        case 0: FecharConsole();
             break;
         default: Console.WriteLine("\n" + opcaoEscolhidaNum + " Não é uma opção válida");
             break;
@@ -97,10 +97,26 @@ void AvaliarBandas()
 
 void MediaBanda()
 {
-    foreach (string banda in listaBandas.Keys)
+    Console.Clear();
+    Console.WriteLine("\nAvaliação das Bandas\n");
+    foreach (var banda in listaBandas)
     {
-        Console.WriteLine($"A nota da banda {banda} é: {listaBandas[nomeBanda]}");
+        string nomeBanda = banda.Key;
+        List<int> nota = banda.Value;
+        Console.WriteLine($"{nomeBanda} possui a nota {nota.Average()}\n");
     }
+    Console.Write("Selecione alguma tecla para sair");
+    Console.ReadKey();
+    Thread.Sleep(1500);
+    Console.Clear();
+    OpcoesMenu();
+}
+
+void FecharConsole()
+{
+    Console.WriteLine("\nEncerrando o programa...");
+    Thread.Sleep(1000);
+    Environment.Exit(0);
 }
 
 ExibirMensagemDeBoasVindas();
